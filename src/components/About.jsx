@@ -1,0 +1,89 @@
+import React from "react";
+import img from "../assets/github-profile.jpg";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
+const imageVariants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
+};
+
+function About() {
+  return (
+    <motion.section
+      id="about"
+      className="bg-white dark:bg-gray-900 py-24 font-sans flex flex-col items-center"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      variants={containerVariants}
+    >
+      <motion.h1
+        variants={itemVariants}
+        className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-gray-200 mb-12"
+      >
+        About Me
+      </motion.h1>
+
+      {/* Profile Image */}
+      <motion.div
+        variants={imageVariants}
+        className="relative w-48 h-48 md:w-64 md:h-64 flex-shrink-0 mb-12"
+      >
+        <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-purple-500 via-pink-500 to-cyan-400 blur-xl opacity-30 animate-pulse"></div>
+        <img
+          src={img}
+          alt="Moksina Akter"
+          className="relative rounded-full w-full h-full object-cover border-4 border-white dark:border-gray-900 shadow-lg"
+        />
+      </motion.div>
+
+      {/* Text Content */}
+      <div className="text-center max-w-2xl px-6">
+        <motion.h2
+          variants={itemVariants}
+          className="text-2xl md:text-3xl font-semibold text-gray-700 dark:text-gray-300 mb-2"
+        >
+          Hello, I'm{" "}
+          <span className="text-purple-500 dark:text-pink-400">
+            Moksina Akter
+          </span>
+        </motion.h2>
+
+        <motion.p
+          variants={itemVariants}
+          className="mt-2 text-lg text-gray-600 dark:text-gray-400 font-medium"
+        >
+          Passionate MERN Stack Developer & Full Stack Web Developer
+        </motion.p>
+
+        <motion.p
+          variants={itemVariants}
+          className="mt-6 text-base text-gray-600 dark:text-gray-400 leading-relaxed"
+        >
+          I am a dedicated programmer with a strong passion for building modern
+          web applications. I combine creativity with technical skills to craft
+          responsive, scalable, and efficient solutions. Always eager to learn,
+          I embrace challenges, collaborate in teams, and aim for continuous
+          improvement in every project I undertake.
+        </motion.p>
+      </div>
+    </motion.section>
+  );
+}
+
+export default About;
