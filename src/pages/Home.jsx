@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import About from "../components/About";
+import Education from "../components/Education";
 import Projects from "../components/Projects";
 import Skills from "../components/Skills";
 import Service from "../components/Services";
@@ -15,8 +16,9 @@ const Home = () => {
       <Navbar></Navbar>
       <Hero></Hero>
       <About></About>
-      <Projects></Projects>
+      <Education />
       <Skills></Skills>
+      <Projects></Projects>
       <Service></Service>
       <Blogs></Blogs>
       <Contact></Contact>

@@ -62,14 +62,14 @@ const ServiceCard = ({ icon, title, description }) => (
 
 function Services() {
   return (
-    <section id="services" className="bg-gray-50 dark:bg-gray-900 font-sans py-24 px-6">
+    <section id="services" className="bg-white dark:bg-gray-900 font-sans py-10 px-6">
       <div className="max-w-6xl mx-auto">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-bold text-center text-gray-800 dark:text-gray-200 mb-16"
+          className="text-3xl md:text-4xl font-bold text-center text-gray-800 dark:text-gray-200 mb-10"
         >
           My Services
         </motion.h1>

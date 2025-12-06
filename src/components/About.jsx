@@ -26,7 +26,7 @@ function About() {
   return (
     <motion.section
       id="about"
-      className="bg-white dark:bg-gray-900 py-24 font-sans flex flex-col items-center"
+      className="bg-white dark:bg-gray-900 py-10 font-sans flex flex-col items-center"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
@@ -34,7 +34,7 @@ function About() {
     >
       <motion.h1
         variants={itemVariants}
-        className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-gray-200 mb-12"
+        className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-gray-200 mb-10"
       >
         About Me
       </motion.h1>

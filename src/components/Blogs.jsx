@@ -38,14 +38,14 @@ const cardVariants = {
 
 function Blogs() {
   return (
-    <section id="blogs" className="bg-white dark:bg-gray-900 font-sans py-24 px-6">
+    <section id="blogs" className="bg-gray-100 dark:bg-gray-800 font-sans py-10 px-6">
       <div className="max-w-7xl mx-auto">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-bold text-center text-gray-800 dark:text-gray-200 mb-16"
+          className="text-3xl md:text-4xl font-bold text-center text-gray-800 dark:text-gray-200 mb-10"
         >
           My Recent Blogs
         </motion.h1>
@@ -90,17 +90,7 @@ function Blogs() {
           ))}
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="mt-16 text-center"
-        >
-          <button className="px-8 py-3 bg-white dark:bg-gray-800 text-indigo-600 dark:text-indigo-400 border border-indigo-600 dark:border-indigo-400 rounded-lg text-lg font-semibold hover:bg-indigo-50 dark:hover:bg-gray-700 transition-all shadow-sm">
-            View More Blogs
-          </button>
-        </motion.div>
+
       </div>
     </section>
   );

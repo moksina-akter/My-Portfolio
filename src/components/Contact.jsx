@@ -13,11 +13,18 @@ function Contact() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Thank you! Your message has been sent.");
-    setFormData({ name: "", email: "", message: "" }); // reset form
+    try {
+      console.log("Form submitted:", formData);
+      // Simulate an API call
+      await new Promise(resolve => setTimeout(resolve, 500));
+      alert("Thank you! Your message has been sent.");
+      setFormData({ name: "", email: "", message: "" }); // reset form
+    } catch (error) {
+      console.error("Submission error:", error);
+      alert("Something went wrong. Please try again.");
+    }
   };
 
   const contacts = [
@@ -44,14 +51,14 @@ function Contact() {
   ];
 
   return (
-    <section id="contact" className="font-sans bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen flex flex-col justify-center py-24">
+    <section id="contact" className="font-sans bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen flex flex-col justify-center py-10">
       <div className="container mx-auto w-11/12 md:w-10/12 p-6">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-bold text-center text-gray-800 dark:text-white mb-4"
+          className="text-3xl md:text-4xl font-bold text-center text-gray-800 dark:text-white mb-4"
         >
           Contact Me
         </motion.h1>

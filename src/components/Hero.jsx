@@ -79,7 +79,9 @@ function Hero() {
               <FaArrowRightLong />
             </a>
             <a
-              href="#resume"
+              href="https://docs.google.com/document/d/1QFfDgUodlvCqdiKhsqT7aLRVRWsBazHauLB_L6Ntpzw/edit?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-6 flex justify-center items-center gap-2 py-3 border border-gray-300 dark:border-gray-600 bg-white/50 dark:bg-gray-800/50 text-gray-800 dark:text-gray-200 font-semibold rounded-lg backdrop-blur-sm hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-center"
             >
               Resume
