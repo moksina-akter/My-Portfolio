@@ -1,6 +1,6 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { FaGithub, FaExternalLinkAlt, FaCode } from "react-icons/fa";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaGithub, FaExternalLinkAlt, FaCode, FaTimes, FaArrowRight } from "react-icons/fa";
 
 const projects = [
   {
@@ -9,11 +9,14 @@ const projects = [
       "An engaging online library for discovering indie games. Browse a vast collection, view detailed insights, and manage your wishlist with ease.",
     image: "https://i.ibb.co.com/Vc213qLT/Screenshot-2025-12-06-140244.png",
     tags: ["React", "Tailwind CSS", "Firebase"],
+    mainStack: "MERN Stack (MongoDB, Express, React, Node.js)",
     links: {
       live: "https://illustrious-dolphin-1c8486.netlify.app/",
       repo: "https://github.com/moksina-akter/GameHub",
       backend: null
-    }
+    },
+    challenges: "Handling real-time updates for the wishlist and optimizing image loading for a large collection of games.",
+    improvements: "Implementing a user review system and adding more advanced filtering options based on game genres and ratings."
   },
   {
     title: "HERO.IO",
@@ -22,11 +25,14 @@ const projects = [
     image:
       "https://i.ibb.co.com/KjJ7VGNH/Screenshot-2025-12-06-140123.png",
     tags: ["Tailwind CSS", "React", "Framer motion"],
+    mainStack: "React, Tailwind CSS",
     links: {
       live: "https://mellow-naiad-91c8d6.netlify.app/",
       repo: "https://github.com/moksina-akter/Ph-Assignment-08",
       backend: "#"
-    }
+    },
+    challenges: "Managing complex state for app installation progress and ensuring smooth animations across different devices.",
+    improvements: "Adding a backend to store user preferences and app usage statistics permanently."
   },
   {
     title: "Import-Export Hub",
@@ -35,11 +41,14 @@ const projects = [
     image:
       "https://i.ibb.co.com/23D9bkrt/Screenshot-2025-12-06-140152.png",
     tags: ["Express", "Firebase", "React", "MongoDB", "Tailwind CSS", "JWT"],
+    mainStack: "MERN Stack",
     links: {
       live: "https://wondrous-pastelito-a54025.netlify.app/",
       repo: "https://github.com/moksina-akter/Ph-Assignment-10--Client-",
       backend: "https://github.com/moksina-akter/Ph-Assignment-10-Server"
-    }
+    },
+    challenges: "Implementing secure authentication with JWT and ensuring real-time updates for inventory levels.",
+    improvements: " integrating a payment gateway for premium features and adding multi-language support."
   },
 ];
 
@@ -59,6 +68,18 @@ const cardVariants = {
 };
 
 function Projects() {
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  const openModal = (project) => {
+    setSelectedProject(project);
+    document.body.style.overflow = "hidden"; // Prevent scrolling when modal is open
+  };
+
+  const closeModal = () => {
+    setSelectedProject(null);
+    document.body.style.overflow = "auto";
+  };
+
   return (
     <section
       id="projects"
@@ -97,33 +118,7 @@ function Projects() {
               variants={cardVariants}
               className="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 flex flex-col h-full"
             >
-              {/* Image Container */}
               <div className="relative overflow-hidden h-52 group">
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex items-center justify-center gap-4">
-                  {/* Overlay Buttons */}
-                  {project.links.live && project.links.live !== '#' && (
-                    <a
-                      href={project.links.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-3 bg-white text-gray-900 rounded-full hover:scale-110 transition-transform shadow-lg"
-                      title="Live Demo"
-                    >
-                      <FaExternalLinkAlt />
-                    </a>
-                  )}
-                  {project.links.repo && project.links.repo !== '#' && (
-                    <a
-                      href={project.links.repo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-3 bg-white text-gray-900 rounded-full hover:scale-110 transition-transform shadow-lg"
-                      title="GitHub Repo"
-                    >
-                      <FaGithub />
-                    </a>
-                  )}
-                </div>
                 <motion.img
                   whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.6 }}
@@ -133,19 +128,18 @@ function Projects() {
                 />
               </div>
 
-              {/* Content */}
               <div className="p-6 flex flex-col flex-grow">
                 <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-3 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                   {project.title}
                 </h3>
 
-                <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6 flex-grow">
+                <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6 flex-grow line-clamp-3">
                   {project.description}
                 </p>
 
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tags.map((tag, i) => (
+                  {project.tags.slice(0, 3).map((tag, i) => (
                     <span
                       key={i}
                       className="px-3 py-1 text-xs font-semibold tracking-wide text-indigo-700 bg-indigo-50 dark:bg-indigo-900/30 dark:text-indigo-300 rounded-full border border-indigo-100 dark:border-indigo-800"
@@ -155,33 +149,118 @@ function Projects() {
                   ))}
                 </div>
 
-                {/* Footer Links (Visible on mobile or fallback) */}
-                <div className="pt-4 border-t border-gray-100 dark:border-gray-700 flex justify-between items-center">
-                  <div className="flex gap-4">
-                    {project.links.backend && project.links.backend !== '#' && project.links.backend !== null ? (
-                      <>
-                        <a href={project.links.repo} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
-                          <FaGithub className="text-lg" /> Client
-                        </a>
-                        <a href={project.links.backend} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
-                          <FaCode className="text-lg" /> Server
-                        </a>
-                      </>
-                    ) : (
-                      <a href={project.links.repo} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
-                        <FaGithub className="text-lg" /> Code
-                      </a>
-                    )}
-                    <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
-                      <FaExternalLinkAlt className="text-sm" /> Live
-                    </a>
-                  </div>
-                </div>
+                <button
+                  onClick={() => openModal(project)}
+                  className="w-full mt-auto py-3 px-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2"
+                >
+                  View More / Details <FaArrowRight />
+                </button>
               </div>
             </motion.div>
           ))}
         </motion.div>
       </div>
+
+      {/* Modal */}
+      <AnimatePresence>
+        {selectedProject && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+            onClick={closeModal}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="bg-white dark:bg-gray-800 w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-2xl shadow-2xl relative"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={closeModal}
+                className="absolute top-4 right-4 p-2 bg-gray-100 dark:bg-gray-700 rounded-full text-gray-600 dark:text-gray-300 hover:bg-red-100 dark:hover:bg-red-900/30 hover:text-red-600 transition-colors z-10"
+              >
+                <FaTimes size={20} />
+              </button>
+
+              <div className="relative h-64 sm:h-80 w-full">
+                <img
+                  src={selectedProject.image}
+                  alt={selectedProject.title}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end">
+                  <h2 className="text-3xl sm:text-4xl font-bold text-white p-6 sm:p-8">
+                    {selectedProject.title}
+                  </h2>
+                </div>
+              </div>
+
+              <div className="p-6 sm:p-8 space-y-6">
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Technolgies</h3>
+                  <p className="text-indigo-600 dark:text-indigo-400 font-medium">
+                    {selectedProject.mainStack}
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Description</h3>
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    {selectedProject.description}
+                  </p>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Challenges Faced</h3>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm">
+                      {selectedProject.challenges}
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Potential Improvements</h3>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm">
+                      {selectedProject.improvements}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap gap-4 pt-4 border-t border-gray-100 dark:border-gray-700">
+                  <a
+                    href={selectedProject.links.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-md transition-colors"
+                  >
+                    <FaExternalLinkAlt /> Live Project
+                  </a>
+                  <a
+                    href={selectedProject.links.repo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-6 py-3 bg-gray-800 dark:bg-gray-700 hover:bg-gray-900 dark:hover:bg-gray-600 text-white font-semibold rounded-lg shadow-md transition-colors"
+                  >
+                    <FaGithub /> Client Code
+                  </a>
+                  {selectedProject.links.backend && (
+                    <a
+                      href={selectedProject.links.backend}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-6 py-3 bg-gray-800 dark:bg-gray-700 hover:bg-gray-900 dark:hover:bg-gray-600 text-white font-semibold rounded-lg shadow-md transition-colors"
+                    >
+                      <FaCode /> Server Code
+                    </a>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

@@ -64,15 +64,21 @@ function Services() {
   return (
     <section id="services" className="bg-white dark:bg-gray-900 font-sans py-10 px-6">
       <div className="max-w-6xl mx-auto">
-        <motion.h1
+        <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-3xl md:text-4xl font-bold text-center text-gray-800 dark:text-gray-200 mb-10"
+          className="text-center mb-10"
         >
-          My Services
-        </motion.h1>
+          <h2 className="text-sm font-bold tracking-widest text-indigo-600 dark:text-indigo-400 uppercase mb-3">
+            What I Offer
+          </h2>
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-gray-200">
+            My <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Services</span>
+          </h1>
+          <div className="w-24 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto rounded-full mt-6"></div>
+        </motion.div>
 
         <motion.div
           variants={containerVariants}

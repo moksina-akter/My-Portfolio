@@ -1,10 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import img from "../assets/github-profile.jpg";
-import { FaArrowRightLong } from "react-icons/fa6";
+import { FaArrowRightLong, FaGithub, FaLinkedin, FaFacebook } from "react-icons/fa6";
 import { MdOutlineFileDownload } from "react-icons/md";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+
+const roles = [
+  "Frontend Developer",
+  "React Developer",
+  "MERN Stack Developer",
+  "NextJs Developer",
+  "Junior Full Stack Developer"
+];
 
 function Hero() {
+  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentRoleIndex((prevIndex) => (prevIndex + 1) % roles.length);
+    }, 3000); // Change every 3 seconds
+
+    return () => clearInterval(interval);
+  }, []);
   return (
     <section className="relative flex flex-col justify-center items-center min-h-screen bg-black dark:bg-gray-900 overflow-hidden">
       {/* Background Gradient Circles */}
@@ -37,14 +54,20 @@ function Hero() {
             </span>
           </motion.h2>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-5xl md:text-6xl font-extrabold mt-4 bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent"
-          >
-            MERN Stack Developer
-          </motion.h1>
+          <div className="h-20 mt-4 md:h-24">
+            <AnimatePresence mode="wait">
+              <motion.h1
+                key={roles[currentRoleIndex]} // Key triggers re-animation
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+                className="text-3xl md:text-5xl font-extrabold bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent leading-tight"
+              >
+                {roles[currentRoleIndex]}
+              </motion.h1>
+            </AnimatePresence>
+          </div>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -86,6 +109,24 @@ function Hero() {
             >
               Resume
               <MdOutlineFileDownload />
+            </a>
+          </motion.div>
+
+          {/* Social Links */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.8 }}
+            className="mt-8 flex gap-6 justify-center md:justify-start"
+          >
+            <a href="https://github.com/moksina-akter" target="_blank" rel="noopener noreferrer" className="text-3xl text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors">
+              <FaGithub />
+            </a>
+            <a href="https://www.linkedin.com/in/moksina-akter-2ba995315/" target="_blank" rel="noopener noreferrer" className="text-3xl text-blue-600 dark:text-blue-500 hover:text-blue-800 dark:hover:text-blue-400 transition-colors">
+              <FaLinkedin />
+            </a>
+            <a href="https://www.facebook.com/moksina.akter.921" target="_blank" rel="noopener noreferrer" className="text-3xl text-blue-500 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors">
+              <FaFacebook />
             </a>
           </motion.div>
         </div>

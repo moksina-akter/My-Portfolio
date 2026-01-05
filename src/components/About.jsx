@@ -32,12 +32,18 @@ function About() {
       viewport={{ once: true, amount: 0.3 }}
       variants={containerVariants}
     >
-      <motion.h1
-        variants={itemVariants}
-        className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-gray-200 mb-10"
-      >
-        About Me
-      </motion.h1>
+      <motion.div variants={itemVariants} className="text-center mb-10">
+        <h2 className="text-sm font-bold tracking-widest text-indigo-600 dark:text-indigo-400 uppercase mb-3">
+          Introduction
+        </h2>
+        <h1 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white">
+          About{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
+            Me
+          </span>
+        </h1>
+        <div className="w-20 h-1.5 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto rounded-full mt-6"></div>
+      </motion.div>
 
       {/* Profile Image */}
       <motion.div
@@ -73,13 +79,24 @@ function About() {
 
         <motion.p
           variants={itemVariants}
-          className="mt-6 text-base text-gray-600 dark:text-gray-400 leading-relaxed"
+          className="mt-6 text-base text-gray-600 dark:text-gray-400 leading-relaxed text-justify"
         >
-          I am a dedicated programmer with a strong passion for building modern
-          web applications. I combine creativity with technical skills to craft
-          responsive, scalable, and efficient solutions. Always eager to learn,
-          I embrace challenges, collaborate in teams, and aim for continuous
-          improvement in every project I undertake.
+          My journey into programming began with a curiosity about how websites
+          work, which quickly turned into a passion for creating them. I enjoy
+          building interactive, user-friendly applications that solve real-world
+          problems.
+          <br />
+          <br />I really enjoy working with the{" "}
+          <strong className="text-purple-600 dark:text-purple-400">
+            MERN Stack (MongoDB, Express, React, NextJs, Node.js)
+          </strong>{" "}
+          because it allows me to handle both the front-end and back-end
+          seamlessly.
+          <br />
+          <br />
+          When I'm not coding, you can find me exploring nature, reading books,
+          or experimenting with new recipes. I believe in continuous learning
+          and always strive to improve my skills, one project at a time.
         </motion.p>
       </div>
     </motion.section>

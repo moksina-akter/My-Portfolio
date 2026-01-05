@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaEnvelope, FaPhone, FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaEnvelope, FaPhone, FaLinkedin, FaGithub, FaWhatsapp } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 function Contact() {
@@ -48,29 +48,31 @@ function Contact() {
       label: "GitHub",
       value: "Moksina Akter",
     },
+    {
+      icon: <FaWhatsapp className="text-xl" />,
+      label: "WhatsApp",
+      value: "+880 1978 718692",
+    },
   ];
 
   return (
     <section id="contact" className="font-sans bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen flex flex-col justify-center py-10">
       <div className="container mx-auto w-11/12 md:w-10/12 p-6">
-        <motion.h1
+        <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-3xl md:text-4xl font-bold text-center text-gray-800 dark:text-white mb-4"
+          className="text-center mb-10"
         >
-          Contact Me
-        </motion.h1>
-        <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="text-2xl font-semibold text-center mb-16 text-gray-600 dark:text-gray-300"
-        >
-          Let's get in touch
-        </motion.h2>
+          <h2 className="text-sm font-bold tracking-widest text-indigo-600 dark:text-indigo-400 uppercase mb-3">
+            Get in Touch
+          </h2>
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white">
+            Contact <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Me</span>
+          </h1>
+          <div className="w-24 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto rounded-full mt-6"></div>
+        </motion.div>
 
         <div className="flex flex-col lg:flex-row justify-between gap-12 items-start">
           <motion.div
