@@ -1,37 +1,49 @@
 # My Portfolio
 
-A professional and responsive portfolio website showcasing my skills, projects, and experience as a MERN Stack Developer.
+I am a passionate Frontend Developer and MERN Stack enthusiast. This portfolio showcases a collection of modern, responsive, and user-friendly web applications built with a strong focus on performance, clean UI, and great user experience. It reflects my continuous learning journey, problem-solving mindset, and dedication to writing quality code.
 
-## Features
+## 🔥 Features
 
--   **Responsive Design**: Fully responsive layout for Desktop, Tablet, and Mobile devices.
--   **Dynamic Hero Section**: engaging hero section with animated cycling text for designations.
--   **Project Details Modal**: Interactive popup modals for viewing detailed project information without leaving the page.
--   **Professional Experience**: A clean timeline section to display work history.
--   **Contact Form**: Functional contact form with validation.
--   **Animations**: Smooth animations using Framer Motion.
+- **Responsive Design** – Optimized for Desktop, Tablet, and Mobile devices
+- **Dynamic Hero Section** – Animated cycling text for professional designations
+- **Project Showcase** – Interactive modals with detailed project information
+- **Experience Timeline** – Clean and structured professional experience section
+- **Contact Form** – Functional form with validation
+- **Smooth Animations** – Implemented using Framer Motion
 
-## Technologies Used
+## 🛠️ Technologies Used
 
--   **Frontend**: React, Next.js, Tailwind CSS, Framer Motion
--   **Icons**: React Icons
--   **Deployment**: [Netlify/Vercel] (Update with your actual deployment platform)
+### Frontend
+
+- React.js
+- Next.js
+- JavaScript (ES6+)
+- HTML5
+- CSS3
+- Tailwind CSS
+- DaisyUI
+- Framer Motion
+
+### Backend
+
+- Node.js
+- Express.js
+- MongoDB
+
+### Tools & Libraries
+
+- React Icons
+- Git & GitHub
+
+### Deployment
+
+- Netlify / Vercel
 
 ## Getting Started
 
-1.  Clone the repository:
-    ```bash
-    git clone https://github.com/moksina-akter/My-Portfolio.git
-    ```
-2.  Install dependencies:
-    ```bash
-    npm install
-    ```
-3.  Run the development server:
-    ```bash
-    npm run dev
-    ```
+Follow the steps below to run the project locally:
 
-## License
-
-This project is licensed under the MIT License.
+1. Clone the repository
+   ```bash
+   git clone https://github.com/moksina-akter/My-Portfolio.git
+   ```
